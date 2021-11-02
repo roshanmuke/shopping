@@ -1,0 +1,25 @@
+<!-- <div>
+     <button (click)="logout()" class="btn btn-primary addBtn d-flex float-right">Logout</button>
+</div> -->
+
+<div class="container p-3 w-100">
+    <h1 class="text-center">Admin Dashboards</h1>
+    <!-- <h2>Hello {{ loggedInUser.UserName }}</h2> -->
+    <div class="btn btn-primary addBtn">
+        <a 
+        class=" btn-primary"
+        [routerLink]="['/dashboard/addProduct', 'add']"
+        >Add Product</a>
+    </div>
+    <div class="d-flex float-right">
+        <input class="form-control"  type="search" [(ngModel)]="searchTxt" (click)="searchProduct()" placeholder="Search" aria-label="Search">
+        <button class="btn btn-primary addBtn d-flex float-right h-25 " (click)="searchProduct()" type="submit">Search</button>
+    </div>
+</div>
+    <div class="w-100">
+    <app-product-list [productArr]="productArr" [role]="1" (deleteEvent)="getProductList()"></app-product-list>
+    </div>
+    <!-- <app-product-list [productArr]="productArr" [role]="2"></app-product-list> -->
+
+
+

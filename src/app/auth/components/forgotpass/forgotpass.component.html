@@ -1,0 +1,38 @@
+<div id="body">
+    <div id="forgot">
+        <h3 class="text-center text-white pt-5"> </h3>
+        <div class="container">
+            <div id="forgot-row" class="row justify-content-center align-items-center">
+                <div id="forgot-column" class="col-md-6">
+                    <div id="forgot-box" class="col-md-12">
+                        <form [formGroup]="forgotForm" id="forgot-form" class="form" action="" method="post">
+                            <h3 class="text-center text-info">Forgot Password</h3>
+                            <div class="form-group">
+                                <label for="email" class="text-info">Email:</label><br>
+                                <input type="email" placeholder= "Enter Email" class="form-control"
+                               formControlName="email"
+                                >
+                            </div>
+                            <div class="alert alert-danger" *ngIf="forgotForm.get('email').invalid && forgotForm.get('email').touched">
+                                <div *ngIf="forgotForm.get('email').hasError('required')">
+                                    <b>Error!</b>This field is required.
+                                </div>
+                                <div *ngIf="forgotForm.get('email').hasError('minlength')">This field is required minimum 8 characters. </div>
+
+                            </div>
+
+                
+                            <div id="submit-link" class="text-right" >
+                                <input type="submit"  name="submit" class="btn btn-info btn-md" value="submit"/>
+
+                            </div>
+                            <div id="login-link" >
+                                <a [routerLink]="['/auth/login']" class="btn text-primary btn-md">Back to login</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

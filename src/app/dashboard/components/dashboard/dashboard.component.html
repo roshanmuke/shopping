@@ -1,0 +1,49 @@
+
+<nav class="navbar navbar-expand-lg navbar-light bg-primary h-20">
+  <i class=" bi bi-list ml-3 iconClass text-white"  (click)="toggleSidebar() " ></i>
+  <!--  fas fa-bars  fal fa-align-justify-->
+  
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+      </li>
+    </ul>
+  </div>
+  <h4 class="text-white mt-1 h5"> Welcome {{ loggedInUser.UserName |uppercase}}</h4>
+  <button (click)="logout()" class="btn btn-danger addBtn float-right m-1">LOGOUT</button>
+
+</nav>
+
+<ng-sidebar-container>
+  <!-- Sidebar -->
+  
+  <ng-sidebar [opened]="opened"  >
+      <!-- <i class="bi bi-list float-right" (click)="toggleSidebar()"></i> -->
+      <h4>Dashboard Contents</h4>
+  
+      <hr class="mt-3 mb-5 bg-white"/>
+      <ul class="menu">
+          <li><a [routerLink]="['/dashboard/admin-dashboard']">Admin Dashboard <i class="bi bi-chevron-right white float-right "></i></a></li>
+          <li><a [routerLink]="['/dashboard/customer-dashboard']">Customer Dashboard <i class="bi bi-chevron-right white float-right"></i></a></li>
+          <li><a [routerLink]="['/dashboard/user']">User Dashboard <i class="bi bi-chevron-right white float-right"></i></a></li>
+      </ul>
+  </ng-sidebar>
+
+  <div ng-sidebar-content>
+      <!-- Page Contents -->
+      <div [ngStyle]="{'width.%':widthchange}" class="border border-secondary p-3 mt-1 float-right rightPanel ">
+      <!-- <app-admin-dashboard></app-admin-dashboard> -->
+      <app-customer-dashboard></app-customer-dashboard>
+      <!-- <app-user></app-user> -->
+      <router-outlet></router-outlet>
+       </div>
+
+
+  </div>
+</ng-sidebar-container>
+
+

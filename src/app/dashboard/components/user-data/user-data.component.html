@@ -1,0 +1,215 @@
+<div class="formContainer">
+    <h4>{{ title }} User Details</h4>
+    <form [formGroup]="UserForm">
+      <div class="form-group">
+        <label for="usr">*User Name :</label>
+        <input
+          type="text"
+          class="form-control"
+          id="usr"
+          placeholder="Enter User Name"
+          name="userName"
+          formControlName="userName"
+        />
+        <div
+          *ngIf="
+            UserForm.get('userName').invalid &&
+            UserForm.get('userName').touched "
+        >
+          <div
+            class="alert alert-danger"
+            *ngIf="UserForm.get('userName').hasError('required')"
+          >
+            <strong>Error!</strong> This field is required.
+          </div>
+          <div
+            class="alert alert-danger"
+            *ngIf="UserForm.get('userName').hasError('minlength')"
+          >
+            <strong>Error!</strong> This field requires minimum 3 characters.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="size">*User Email :</label>
+        <input
+          type="text"
+          class="form-control"
+          id="size"
+          placeholder="Enter User Email"
+          name="userEmail"
+          formControlName="userEmail"
+        />
+        <div
+          *ngIf="
+            UserForm.get('userEmail').invalid &&
+            UserForm.get('userEmail').touched
+          "
+        >
+          <div
+            class="alert alert-danger"
+            *ngIf="UserForm.get('userEmail').hasError('required')"
+          >
+            <strong>Error!</strong> This field is required.
+          </div>
+          <div
+            class="alert alert-danger"
+            *ngIf="UserForm.get('userEmail').hasError('minlength')"
+          >
+            <strong>Error!</strong> This field requires minimum 3 characters.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="color">* User Password:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="color"
+          placeholder="Enter Password"
+          name="userPassword"
+          formControlName="userPassword"
+        />
+        <div
+          *ngIf="
+            UserForm.get('userPassword').invalid &&
+            UserForm.get('userPassword').touched
+          "
+        >
+          <div
+            class="alert alert-danger"
+            *ngIf="UserForm.get('userPassword').hasError('required')"
+          >
+            <strong>Error!</strong> This field is required.
+          </div>
+          <div
+            class="alert alert-danger"
+            *ngIf="UserForm.get('userPassword').hasError('minlength')"
+          >
+            <strong>Error!</strong> This field requires minimum 3 characters.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="price">*User Role:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="price"
+          placeholder="Enter Role"
+          name="userRole"
+          formControlName="userRole"
+        />
+        <div
+          *ngIf="
+            UserForm.get('userRole').invalid &&
+            UserForm.get('userRole').touched
+          "
+        >
+          <div
+            class="alert alert-danger"
+            *ngIf="UserForm.get('userRole').hasError('required')"
+          >
+            <strong>Error!</strong> This field is required.
+          </div>
+          <div
+            class="alert alert-danger"
+            *ngIf="UserForm.get('userRole').hasError('minlength')"
+          >
+            <strong>Error!</strong> This field requires minimum 3 characters.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="URL">*User Mobile:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="URL"
+          placeholder="Enter size"
+          name="userMobile"
+          formControlName="userMobile"
+        />
+        <div
+          *ngIf="
+            UserForm.get('userMobile').invalid &&
+            UserForm.get('userMobile').touched
+          "
+        >
+          <div
+            class="alert alert-danger"
+            *ngIf="UserForm.get('userMobile').hasError('required')"
+          >
+            <strong>Error!</strong> This field is required.
+          </div>
+          <div
+            class="alert alert-danger"
+            *ngIf="UserForm.get('userMobile').hasError('minlength')"
+          >
+            <strong>Error!</strong> This field requires minimum 3 characters.
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="URL">*User DOB:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="URL"
+          placeholder="Enter UserDOB"
+          name="userDOB"
+          formControlName="userDOB"
+        />
+        <div
+          *ngIf="
+            UserForm.get('userDOB').invalid &&
+            UserForm.get('userDOB').touched
+          "
+        >
+          <div
+            class="alert alert-danger"
+            *ngIf="UserForm.get('userDOB').hasError('required')"
+          >
+            <strong>Error!</strong> This field is required.
+          </div>
+          <div
+            class="alert alert-danger"
+            *ngIf="UserForm.get('userDOB').hasError('minlength')"
+          >
+            <strong>Error!</strong> This field requires minimum 3 characters.
+          </div>
+        </div>
+      </div>
+  
+  
+      <div class="alert alert-danger" *ngIf="apiFlag && !apiSuccess">
+        <strong>Error!</strong> {{ errorMessage }}
+      </div>
+      <div class="alert alert-success" *ngIf="apiFlag && apiSuccess">
+        <strong>Success!</strong> Product Updated successfully !!
+        <a routerLink="/dashboard/user">Back to User Dashboard</a>
+      </div>
+      <div class="form-group clearfix">
+        <button
+          type="button"
+          class="btn btn-secondary clearBtn"
+          (click)="clearUserForm()"
+        >
+          Clear
+        </button>
+  
+        <button
+          type="submit"
+          class="btn btn-primary submitBtn"
+          (click)="submitUserForm()"
+        >
+          Submit
+        </button>
+        <div class="submitBtn" *ngIf="apiSpinner">
+          <div class="spinner-border"></div>
+        </div>
+      </div>
+    </form>
+  </div>
+  

@@ -1,0 +1,56 @@
+<div>
+<h1 class="text-center"> User Dashboards</h1>
+</div>
+<div class="container  mr-0 mb-3 mt-5">
+ <div class="btn btn-primary addBtn">
+    <a 
+    class=" btn-primary"
+    >Add Product</a>
+</div>
+<div class="d-flex  float-right">
+    <input class="form-control"  type="search" [(ngModel)]="searchTxt" (keyup)="searchUser()" placeholder="Search" aria-label="Search">
+    <button class="btn btn-primary addBtn d-flex float-right h-25 " (keyup)="searchUser()" type="submit">Search</button>
+</div>
+</div>
+<div class="d-flex justify-content-end">
+    <table class="table table-bordered w-100 float-right">
+        <thead>
+            <tr>
+                <!-- <i class="fa fa-fw fa-sort float-right mt-1" (click)="sortName()" ></i>-->
+                <!-- <i class="fa fa-fw fa-sort float-right mt-1" (click)="sortSize()"> </i> -->
+                <!-- <i class="fa fa-fw fa-sort float-right mt-1" (click)="sortPrice()"></i> -->
+                <th scope="col">ID</th>
+                <th scope="col">UserName <i class="fa fa-fw fa-sort float-right mt-1" (click)="sortUserName()"> </i></th>
+                <th scope="col">Email<i class="fa fa-fw fa-sort float-right mt-1" (click)="sortUserEmail()"> </i></th>
+                <th scope="col">UserRole <i class="fa fa-fw fa-sort float-right mt-1" (click)="sortUserRole()"> </i> </th>
+                <th scope="col">Mobile <i class="fa fa-fw fa-sort float-right mt-1" (click)="sortUserMobile()"></i></th>
+                <th scope="col">DOB  <i class="fa fa-fw fa-sort float-right mt-1" (click)="sortUserDOB()"></i> </th>
+                <th scope="col">Edit</th>
+                <th scope="col">View</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of userArr; let i = index">
+                <th scope="row">{{ i+1 }}</th>
+                <td> {{ user.UserName }}</td>
+                <td> {{ user.UserEmail }}</td>
+                <td> {{ user.UserRole }}</td>
+                <td> {{ user.UserMobile }}</td>
+                <td> {{ user.UserDOB |  date : 'dd/MM/yyyy' }}</td>    <!-- |  date : 'dd/MM/yyyy' -->
+
+               
+                <td>
+                    <a [routerLink]="['/dashboard/editUser', 'edit', user.User_ID]"
+                    class="btn btn-primary">Edit</a>
+                </td>
+                <td>
+                    <a [routerLink]="['/dashboard/viewUser','view',user.User_ID]"  class="btn btn-danger">View</a>
+                </td> 
+                <td>
+                    <button type="button" (click)="deleteUser(user.User_ID ,user.UserName)" class="btn btn-danger">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
